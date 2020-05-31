@@ -12,7 +12,7 @@ export class NamesComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  eventFromInner1 = (passed: string) => {
+  eventFromInner = (passed: string) => {
     this.name = passed;
   };
 }

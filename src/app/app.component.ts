@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-<<<<<<< HEAD
 import { HttpClient } from '@angular/common/http';
-=======
->>>>>>> Revert "Revert "initial commit""
 
 @Component({
   selector: 'app-root',
@@ -13,9 +10,14 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent {
   title = 'my-ng-angular-app';
   color: string = 'red';
+  name: string = '';
+  age: number = 0;
+  id: number = 0;
+  found: boolean = false;
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient) {}
 
+<<<<<<< HEAD
     
   }
 =======
@@ -24,4 +26,22 @@ export class AppComponent {
 export class AppComponent {
   title = 'my-ng-angular-app';
 >>>>>>> Revert "Revert "initial commit""
+=======
+  OnNameKeyUp = (event: any) => {
+    this.id = event.target.value;
+  };
+
+  getProfile = () => {
+    this.httpClient
+      .get(
+        `https://my-json-server.typicode.com/typicode/demo/posts?id=${this.id}`
+      )
+      .subscribe((data: any[]) => {
+        if (data.length) {
+          this.title = data[0].title;
+          this.found = true;
+        }
+      });
+  };
+>>>>>>> local commit
 }

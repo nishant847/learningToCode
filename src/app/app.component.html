@@ -1183,7 +1183,11 @@
     ------------------------------------------------------------------------------------------------------------------------------------
   </h1>
 </div>
-
+<input type="text" (keyup)="OnNameKeyUp($event)" />
+<button (click)="getProfile()">Get Profile</button>
+<div *ngIf="found">
+  <span>{{ title }}</span>
+</div>
 <app-names></app-names>
 
 =======
