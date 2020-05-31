@@ -123,6 +123,7 @@
           }
         }
       }
+<<<<<<< HEAD
     }
   },
   "defaultProject": "my-ng-angular-app",
@@ -130,3 +131,8 @@
     "analytics": false
   }
 }
+=======
+    }},
+  "defaultProject": "my-ng-angular-app"
+}
+>>>>>>> Revert "Revert "initial commit""
