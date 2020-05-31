@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-<<<<<<< HEAD
   styleUrls: ['./app.component.less'],
 })
 export class AppComponent {
@@ -16,17 +15,6 @@ export class AppComponent {
   found: boolean = false;
 
   constructor(private httpClient: HttpClient) {}
-
-<<<<<<< HEAD
-    
-  }
-=======
-  styleUrls: ['./app.component.less']
-})
-export class AppComponent {
-  title = 'my-ng-angular-app';
->>>>>>> Revert "Revert "initial commit""
-=======
   OnNameKeyUp = (event: any) => {
     this.id = event.target.value;
   };
@@ -43,5 +31,4 @@ export class AppComponent {
         }
       });
   };
->>>>>>> local commit
 }
