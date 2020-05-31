@@ -7,6 +7,7 @@ import { PersonComponent } from './person/person.component';
 import { NamesComponent } from './names/names.component';
 import { NameTagComponent } from './name-tag/name-tag.component';
 import { EmployeeComponent } from './employee/employee.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,13 +15,10 @@ import { EmployeeComponent } from './employee/employee.component';
     PersonComponent,
     NamesComponent,
     NameTagComponent,
-    EmployeeComponent
+    EmployeeComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
