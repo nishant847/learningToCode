@@ -1,0 +1,10 @@
+<div class="names-container">
+  <span>Names Container</span>
+
+  <div>Selected {{ name }}</div>
+  <app-name-tag
+    *ngFor="let name of nameList"
+    [name]="name"
+    (eventFromInner1)="eventFromInner($event)"
+  ></app-name-tag>
+</div>
