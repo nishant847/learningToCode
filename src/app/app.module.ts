@@ -11,6 +11,10 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './interceptor.module';
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
+import { UserComponent } from './user/user.component';
+import { UserListComponent } from './user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +23,10 @@ import { TokenInterceptor } from './interceptor.module';
     NamesComponent,
     NameTagComponent,
     EmployeeComponent,
+    HomeComponent,
+    AboutComponent,
+    UserComponent,
+    UserListComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [

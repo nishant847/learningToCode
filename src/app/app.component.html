@@ -1,10 +1,5 @@
 <router-outlet></router-outlet>
 
-<div>
-  <h1>
-    ------------------------------------------------------------------------------------------------------------------------------------
-  </h1>
-</div>
 <input type="text" (keyup)="OnNameKeyUp($event)" />
 <button (click)="getProfile()">Get Profile</button>
 <div *ngIf="found">
