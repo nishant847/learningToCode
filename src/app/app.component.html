@@ -1,3 +1,14 @@
+<nav>
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo right">Logo</a>
+    <ul id="nav-mobile" class="left hide-on-med-and-down">
+      <li><a routerLink="/home">Home</a></li>
+      <li><a routerLink="/about">About</a></li>
+      <li><a routerLink="/user/list">User</a></li>
+    </ul>
+  </div>
+</nav>
+
 <router-outlet></router-outlet>
 
 <input type="text" (keyup)="OnNameKeyUp($event)" />
