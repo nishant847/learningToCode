@@ -19,6 +19,7 @@ import { UserComponent } from './user/user.component';
 import { UserListComponent } from './user-list/user-list.component';
 
 import { UserService } from './service/user.service';
+import { EmployeeListComponent } from './employee/employee-list.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { UserService } from './service/user.service';
     AboutComponent,
     UserComponent,
     UserListComponent,
+    EmployeeListComponent,
   ],
   imports: [
     BrowserModule,

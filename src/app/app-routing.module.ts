@@ -5,6 +5,7 @@ import { AboutComponent } from './about/about.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserComponent } from './user/user.component';
 import { EmployeeComponent } from './employee/employee.component';
+import { EmployeeListComponent } from './employee/employee-list.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'employee',
     component: EmployeeComponent,
+  },
+  {
+    path: 'employee/list',
+    component: EmployeeListComponent,
   },
   {
     path: 'user',

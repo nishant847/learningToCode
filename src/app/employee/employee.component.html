@@ -1,33 +1,99 @@
 <div class="container">
   <div class="row justify-content-center">
-    <form [formGroup]="employeeForm">
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
+        <label for="exampleInputName">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="exampleInputName"
+          aria-describedby="nameHelp"
+          placeholder="Enter name"
+          formControlName="name"
+        />
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail">Email</label>
         <input
           type="email"
           class="form-control"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
+          id="exampleInputEmail"
           placeholder="Enter email"
+          formControlName="email"
         />
         <small id="emailHelp" class="form-text text-muted"
           >We'll never share your email with anyone else.</small
         >
       </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input
-          type="password"
-          class="form-control"
-          id="exampleInputPassword1"
-          placeholder="Password"
-        />
+
+      <div formGroupName="skills">
+        <div class="form-group">
+          <label for="skillName">Skill</label>
+          <input
+            type="text"
+            class="form-control"
+            id="skillName"
+            placeholder="Enter skill"
+            formControlName="skillName"
+          />
+        </div>
+        <div class="form-group">
+          <label for="experienceInYears">Experience In Years</label>
+          <input
+            type="text"
+            class="form-control"
+            id="experienceInYears"
+            placeholder="Experience in years"
+            formControlName="skillName"
+          />
+        </div>
+        <div class="form-group">
+          <label for="proficiency">Proficiency</label>
+          <div class="col-md-8">
+            <label class="radio-inline">
+              <input
+                type="radio"
+                formControlName="proficiency"
+                id="proficiency"
+                autocomplete="off"
+                value="beginner"
+              />
+              Beginner
+            </label>
+            <label class="radio-inline">
+              <input
+                type="radio"
+                formControlName="proficiency"
+                id="proficiency"
+                autocomplete="off"
+                value="advanced"
+              />
+              Advanced
+            </label>
+            <label class="radio-inline">
+              <input
+                type="radio"
+                formControlName="proficiency"
+                id="proficiency"
+                autocomplete="off"
+                value="expert"
+              />
+              Expert
+            </label>
+          </div>
+        </div>
       </div>
-      <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+
+      <div class="btn-toolbar">
+        <button type="submit" class="btn btn-primary">Save</button>&nbsp;
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="onLoadDataClick()"
+        >
+          Load Data
+        </button>
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
     </form>
   </div>
 </div>
