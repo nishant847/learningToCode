@@ -1,99 +1,107 @@
 <div class="container">
   <div class="row justify-content-center">
+
     <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="exampleInputName">Name</label>
-        <input
-          type="text"
-          class="form-control"
-          id="exampleInputName"
-          aria-describedby="nameHelp"
-          placeholder="Enter name"
-          formControlName="name"
-        />
+
+      <div class="form-group" [ngClass]="{  'was-validated': formsError.name }">
+        <label for="name">Name</label>
+        <input id="name" class="form-control" formControlName="name" (blur)="logValidationErrors()" />
+        <span *ngIf="formsError.name" class="alert alert-danger">
+          {{ formsError.name }}</span>
       </div>
+
       <div class="form-group">
-        <label for="exampleInputEmail">Email</label>
-        <input
-          type="email"
-          class="form-control"
-          id="exampleInputEmail"
-          placeholder="Enter email"
-          formControlName="email"
-        />
-        <small id="emailHelp" class="form-text text-muted"
-          >We'll never share your email with anyone else.</small
-        >
+        <label for="contactPreference">Contact Preference</label>
+        <div class="col-md-6">
+          <label class="radio-inline">
+            <input type="radio" formControlName="contactPreference" value="email" />
+            Email
+          </label>
+          <label class="radio-inline">
+            <input type="radio" formControlName="contactPreference" value="phone" />
+            Phone
+          </label>
+        </div>
+      </div>
+
+      <div formGroupName="emailGroup">
+
+        <div class="form-group" [ngClass]="{ 'was-validated': formsError.email  }">
+          <label for="exampleInputEmail">Email</label>
+          <input type="email" class="form-control" id="exampleInputEmail" placeholder="Enter email"
+            formControlName="email" (blur)="logValidationErrors()" />
+          <span *ngIf="formsError.email" class="alert alert-danger">
+            {{ formsError.email }}</span>
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+
+        <div class="form-group" [ngClass]="{ 'was-validated': formsError.confirmEmail || formsError.emailGroup  }">
+          <label for="confirmEmail">Confirm Email</label>
+          <input type="email" class="form-control" id="confirmEmail" placeholder="Confirm email"
+            formControlName="confirmEmail" (blur)="logValidationErrors()" />
+          <span *ngIf="formsError.confirmEmail || formsError.emailGroup" class="alert alert-danger">
+            {{ formsError.confirmEmail ? formsError.confirmEmail  :  formsError.emailGroup}}
+
+          </span>
+        </div>
+
+      </div>
+      <div class="form-group" [ngClass]="{  'was-validated': formsError.phone }">
+        <label for="phone">Phone</label>
+        <input id="phone" class="form-control" formControlName="phone" (blur)="logValidationErrors()" />
+        <span *ngIf="formsError.phone" class="alert alert-danger">
+          {{ formsError.phone }}
+        </span>
       </div>
 
       <div formGroupName="skills">
-        <div class="form-group">
+        <div class="form-group" [ngClass]="{ 'was-validated': formsError.skillName }">
           <label for="skillName">Skill</label>
-          <input
-            type="text"
-            class="form-control"
-            id="skillName"
-            placeholder="Enter skill"
-            formControlName="skillName"
-          />
+          <input type="text" class="form-control" id="skillName" placeholder="Enter skill" formControlName="skillName"
+            (blur)="logValidationErrors()" />
+          <span *ngIf="formsError.skillName" class="alert alert-danger">
+            {{ formsError.skillName }}</span>
         </div>
-        <div class="form-group">
+
+        <div class="form-group" [ngClass]="{ 'was-validated': formsError.experienceInYears }">
           <label for="experienceInYears">Experience In Years</label>
-          <input
-            type="text"
-            class="form-control"
-            id="experienceInYears"
-            placeholder="Experience in years"
-            formControlName="skillName"
-          />
+          <input type="text" class="form-control" id="experienceInYears" placeholder="Experience in years"
+            formControlName="experienceInYears" (blur)="logValidationErrors()" />
+          <span *ngIf="formsError.experienceInYears" class="alert alert-danger">
+            {{ formsError.experienceInYears }}</span>
         </div>
-        <div class="form-group">
+
+        <div class="form-group" [ngClass]="{ 'was-validated': formsError.proficiency }">
           <label for="proficiency">Proficiency</label>
           <div class="col-md-8">
             <label class="radio-inline">
-              <input
-                type="radio"
-                formControlName="proficiency"
-                id="proficiency"
-                autocomplete="off"
-                value="beginner"
-              />
+              <input type="radio" formControlName="proficiency" id="proficiency" autocomplete="off" value="beginner"
+                (blur)="logValidationErrors()" />
               Beginner
             </label>
             <label class="radio-inline">
-              <input
-                type="radio"
-                formControlName="proficiency"
-                id="proficiency"
-                autocomplete="off"
-                value="advanced"
-              />
+              <input type="radio" formControlName="proficiency" id="proficiency" autocomplete="off" value="advanced"
+                (blur)="logValidationErrors()" />
               Advanced
             </label>
             <label class="radio-inline">
-              <input
-                type="radio"
-                formControlName="proficiency"
-                id="proficiency"
-                autocomplete="off"
-                value="expert"
-              />
+              <input type="radio" formControlName="proficiency" id="proficiency" autocomplete="off" value="expert"
+                (blur)="logValidationErrors()" />
               Expert
             </label>
           </div>
+          <span *ngIf="formsError.proficiency" class="alert alert-danger">
+            {{ formsError.proficiency }}</span>
         </div>
       </div>
 
       <div class="btn-toolbar">
         <button type="submit" class="btn btn-primary">Save</button>&nbsp;
-        <button
-          type="button"
-          class="btn btn-primary"
-          (click)="onLoadDataClick()"
-        >
+        <button type="button" class="btn btn-primary" (click)="onLoadDataClick()">
           Load Data
         </button>
       </div>
+
     </form>
   </div>
 </div>
