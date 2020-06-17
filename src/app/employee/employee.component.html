@@ -54,47 +54,66 @@
         </span>
       </div>
 
-      <div formGroupName="skills">
-        <div class="form-group" [ngClass]="{ 'was-validated': formsError.skillName }">
-          <label for="skillName">Skill</label>
-          <input type="text" class="form-control" id="skillName" placeholder="Enter skill" formControlName="skillName"
-            (blur)="logValidationErrors()" />
-          <span *ngIf="formsError.skillName" class="alert alert-danger">
-            {{ formsError.skillName }}</span>
-        </div>
+      <div class="skill-container">
 
-        <div class="form-group" [ngClass]="{ 'was-validated': formsError.experienceInYears }">
-          <label for="experienceInYears">Experience In Years</label>
-          <input type="text" class="form-control" id="experienceInYears" placeholder="Experience in years"
-            formControlName="experienceInYears" (blur)="logValidationErrors()" />
-          <span *ngIf="formsError.experienceInYears" class="alert alert-danger">
-            {{ formsError.experienceInYears }}</span>
+        <div class="form-group">
+          <button type="button" class="btn btn-primary" (click)="(addSkillButtonClick())">Add Skill</button>
         </div>
+        <hr />
+        <div formArrayName="skills" class="skill-container"
+          *ngFor="let skill of employeeForm.get('skills')['controls']; let i = index">
+          <div [formGroupName]="i">
+            <div class="form-group" [ngClass]="{ 'was-validated': skill.get('skillName').invalid && 
+                                                                  skill.get('skillName').touched }">
+              <label [attr.for]="'skillName' + i">Skill</label>
+              <input type="text" class="form-control" id="skillName" placeholder="Enter skill"
+                formControlName="skillName" [id]="'skillName' + i" />
+              <span *ngIf="skill.controls.skillName.errors?.required &&  
+                           skill.controls.skillName.touched" class="alert alert-danger">
+                Skill Name is required.
+              </span>
+            </div>
 
-        <div class="form-group" [ngClass]="{ 'was-validated': formsError.proficiency }">
-          <label for="proficiency">Proficiency</label>
-          <div class="col-md-8">
-            <label class="radio-inline">
-              <input type="radio" formControlName="proficiency" id="proficiency" autocomplete="off" value="beginner"
-                (blur)="logValidationErrors()" />
-              Beginner
-            </label>
-            <label class="radio-inline">
-              <input type="radio" formControlName="proficiency" id="proficiency" autocomplete="off" value="advanced"
-                (blur)="logValidationErrors()" />
-              Advanced
-            </label>
-            <label class="radio-inline">
-              <input type="radio" formControlName="proficiency" id="proficiency" autocomplete="off" value="expert"
-                (blur)="logValidationErrors()" />
-              Expert
-            </label>
+            <div class="form-group" [ngClass]="{ 'was-validated': skill.controls.experienceInYears.invalid && 
+                                                                  skill.controls.experienceInYears.touched  }">
+              <label [attr.for]="'experienceInYears'+i">Experience In Years</label>
+              <input type="text" class="form-control" [id]="'experienceInYears'+i" placeholder="Experience in years"
+                formControlName="experienceInYears" />
+              <span *ngIf="skill.controls.experienceInYears.errors?.required && 
+                           skill.controls.experienceInYears.touched" class="alert alert-danger">
+                Experience in years is required.
+              </span>
+            </div>
+
+            <div class="form-group" [ngClass]="{ 'was-validated': skill.controls.proficiency.invalid && 
+                                                                  skill.controls.proficiency.touched }">
+              <label [attr.for]="'proficiency'+i">Proficiency</label>
+              <div class="col-md-8">
+                <label class="radio-inline">
+                  <input type="radio" formControlName="proficiency" [id]="'proficiency'+i" autocomplete="off"
+                    value="beginner" />
+                  Beginner
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" formControlName="proficiency" [id]="'proficiency'+i" autocomplete="off"
+                    value="advanced" />
+                  Advanced
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" formControlName="proficiency" [id]="'proficiency'+i" autocomplete="off"
+                    value="expert" />
+                  Expert
+                </label>
+              </div>
+              <span *ngIf="skill.controls.proficiency.errors?.required && 
+                           skill.controls.proficiency.touched" class="alert alert-danger">
+                Proficiency in years is required.
+              </span>
+            </div>
           </div>
-          <span *ngIf="formsError.proficiency" class="alert alert-danger">
-            {{ formsError.proficiency }}</span>
         </div>
-      </div>
 
+      </div>
       <div class="btn-toolbar">
         <button type="submit" class="btn btn-primary">Save</button>&nbsp;
         <button type="button" class="btn btn-primary" (click)="onLoadDataClick()">

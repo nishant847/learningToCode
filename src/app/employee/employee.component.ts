@@ -5,6 +5,7 @@ import {
   FormBuilder,
   Validators,
   AbstractControl,
+  FormArray,
 } from '@angular/forms';
 import { CustomValidators } from '../shared/CustomValidators';
 
@@ -36,15 +37,6 @@ export class EmployeeComponent implements OnInit {
     },
     phone: {
       required: 'Phone is required',
-    },
-    skillName: {
-      required: 'Skill is required',
-    },
-    experienceInYears: {
-      required: 'Experience  is required',
-    },
-    proficiency: {
-      required: 'Proficiency  is required',
     },
   };
 
@@ -89,11 +81,7 @@ export class EmployeeComponent implements OnInit {
         { validator: CustomValidators.matchEmail }
       ),
       phone: [''],
-      skills: this.fb.group({
-        skillName: ['', Validators.required],
-        experienceInYears: ['', Validators.required],
-        proficiency: ['', Validators.required],
-      }),
+      skills: this.fb.array([this.addSkillFormGroup()]),
     });
 
     this.employeeForm.valueChanges.subscribe((data) => {
@@ -106,6 +94,18 @@ export class EmployeeComponent implements OnInit {
         this.onContactPreferenceChanged(data);
       });
   }
+
+  addSkillFormGroup = (): FormGroup => {
+    return this.fb.group({
+      skillName: ['', Validators.required],
+      experienceInYears: ['', Validators.required],
+      proficiency: ['', Validators.required],
+    });
+  };
+
+  addSkillButtonClick = (): void => {
+    (<FormArray>this.employeeForm.get('skills')).push(this.addSkillFormGroup());
+  };
 
   onContactPreferenceChanged = (selectedValue: string) => {
     const phoneControl = this.employeeForm.get('phone');
@@ -145,6 +145,13 @@ export class EmployeeComponent implements OnInit {
       if (abstractControl instanceof FormGroup) {
         this.logValidationErrors(abstractControl);
       }
+      // if (abstractControl instanceof FormArray) {
+      //   for (const control of abstractControl.controls) {
+      //     if (control instanceof FormGroup) {
+      //       this.logValidationErrors(control);
+      //     }
+      //   }
+      // }
     });
   };
 
@@ -158,8 +165,24 @@ export class EmployeeComponent implements OnInit {
     //   //   proficiency: 'beginner',
     //   // },
     // });
-    this.logValidationErrors();
+    //this.logValidationErrors();
     //console.log(this.formsError);
+
+    const formArray = new FormArray([
+      new FormControl('Jhon', [Validators.required]),
+      new FormGroup({
+        country: new FormControl('', [Validators.required]),
+      }),
+      new FormArray([]),
+    ]);
+
+    const formArray1 = this.fb.array([
+      new FormControl('Jhon', [Validators.required]),
+      new FormControl('IT', [Validators.required]),
+      new FormControl('sd', [Validators.required]),
+    ]);
+
+    console.log(formArray1.valid);
   };
 
   get name() {
