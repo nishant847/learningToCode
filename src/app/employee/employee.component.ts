@@ -8,6 +8,9 @@ import {
   FormArray,
 } from '@angular/forms';
 import { CustomValidators } from '../shared/CustomValidators';
+import { ActivatedRoute } from '@angular/router';
+import { EmployeeService } from './services/employee-service';
+import { IEmployee } from './interfaces/IEmployee';
 
 @Component({
   selector: 'app-employee',
@@ -51,7 +54,11 @@ export class EmployeeComponent implements OnInit {
     proficiency: '',
   };
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private activatedRoute: ActivatedRoute,
+    private employeeService: EmployeeService
+  ) {}
 
   ngOnInit(): void {
     // this.employeeForm = new FormGroup({
@@ -93,7 +100,37 @@ export class EmployeeComponent implements OnInit {
       .valueChanges.subscribe((data: string) => {
         this.onContactPreferenceChanged(data);
       });
+
+    this.activatedRoute.paramMap.subscribe((params) => {
+      const empId: number = +params.get('id');
+      if (empId) {
+        this.getEmployee(empId);
+      }
+    });
   }
+
+  getEmployee = (empId: number) => {
+    this.employeeService.getEmployee(empId).subscribe(
+      (employee: IEmployee) => {
+        this.editEmployee(employee);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  };
+
+  editEmployee = (employee: IEmployee) => {
+    this.employeeForm.patchValue({
+      name: employee.name,
+      contactPreference: employee.contactPreference,
+      emailGroup: {
+        email: employee.email,
+        confirmEmail: employee.email,
+      },
+      phone: employee.phone,
+    });
+  };
 
   addSkillFormGroup = (): FormGroup => {
     return this.fb.group({

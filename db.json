@@ -1,0 +1,22 @@
+{
+  "employess": [{
+
+    "id": 123,
+    "name": "Mark",
+    "contactPreference": "email",
+    "email": "mark@gmail.com",
+    "phone": "1324567",
+    "skills": [{
+        "skillName": "C#",
+        "experienceInYears": 2,
+        "proficiency": "beginner"
+      },
+      {
+        "skillName": ".Net",
+        "experienceInYears": 2,
+        "proficiency": "advanced"
+      }
+    ]
+  }]
+
+}

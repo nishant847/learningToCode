@@ -20,6 +20,8 @@ import { UserListComponent } from './user-list/user-list.component';
 
 import { UserService } from './service/user.service';
 import { EmployeeListComponent } from './employee/employee-list.component';
+import { EmployeeService } from './employee/services/employee-service';
+import { EmployeeEditComponent } from './employee/employee-edit.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import { EmployeeListComponent } from './employee/employee-list.component';
     UserComponent,
     UserListComponent,
     EmployeeListComponent,
+    EmployeeEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +51,7 @@ import { EmployeeListComponent } from './employee/employee-list.component';
       multi: true,
     },
     UserService,
+    EmployeeService,
   ],
   bootstrap: [AppComponent],
 })
