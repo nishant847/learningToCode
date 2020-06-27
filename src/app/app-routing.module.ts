@@ -6,6 +6,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { UserComponent } from './user/user.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { EmployeeListComponent } from './employee/employee-list.component';
+import { PageNotFoundComponent } from './page-not-found.component';
 
 const routes: Routes = [
   {
@@ -26,8 +27,9 @@ const routes: Routes = [
   },
   {
     path: 'employee/edit/:id',
-    component: EmployeeListComponent,
+    component: EmployeeComponent,
   },
+
   {
     path: 'user',
     children: [
@@ -50,8 +52,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '/home',
-    pathMatch: 'full',
+    component: PageNotFoundComponent,
   },
 ];
 

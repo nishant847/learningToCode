@@ -22,6 +22,7 @@ import { UserService } from './service/user.service';
 import { EmployeeListComponent } from './employee/employee-list.component';
 import { EmployeeService } from './employee/services/employee-service';
 import { EmployeeEditComponent } from './employee/employee-edit.component';
+import { PageNotFoundComponent } from './page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { EmployeeEditComponent } from './employee/employee-edit.component';
     UserListComponent,
     EmployeeListComponent,
     EmployeeEditComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

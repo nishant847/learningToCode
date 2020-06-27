@@ -27,7 +27,7 @@ export class EmployeeService {
 
   update = (employee: IEmployee) => {
     return this.httpClient
-      .put<void>(this.baseUrl, employee, {
+      .put<void>(`${this.baseUrl}/${employee.id}`, employee, {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
         }),
@@ -43,7 +43,7 @@ export class EmployeeService {
 
   create = (employee: IEmployee) => {
     return this.httpClient
-      .post<void>(this.baseUrl, employee, {
+      .post<IEmployee>(this.baseUrl, employee, {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
         }),

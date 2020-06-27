@@ -1,11 +1,7 @@
 import { AbstractControl } from '@angular/forms';
 export class CustomValidators {
   static emailDomain = (domainName: string) => {
-    return (
-      control: AbstractControl
-    ): {
-      [key: string]: boolean;
-    } | null => {
+    return (control: AbstractControl): { [key: string]: boolean } | null => {
       const email: string = control.value;
       const domain = email.substring(email.lastIndexOf('@') + 1);
       if (
@@ -25,7 +21,10 @@ export class CustomValidators {
     const emailControl = group.get('email');
     const confirmEmailControl = group.get('confirmEmail');
 
-    if (emailControl.value === confirmEmailControl.value) {
+    if (
+      emailControl.value === confirmEmailControl.value ||
+      (emailControl.pristine && emailControl.value === '')
+    ) {
       return null;
     } else {
       return { emailMismatch: true };
