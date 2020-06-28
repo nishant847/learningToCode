@@ -1,13 +1,11 @@
 {
-  "employess": [
-    {
+  "employess": [{
       "id": 123,
       "name": "Mark N",
       "contactPreference": "email",
       "email": "mark@dell.com",
       "phone": "1324567",
-      "skills": [
-        {
+      "skills": [{
           "skillName": "C#121313",
           "experienceInYears": 2,
           "proficiency": "beginner"
@@ -20,28 +18,11 @@
       ]
     },
     {
-      "id": 124,
-      "contactPreference": "",
-      "email": "",
-      "name": "",
-      "skills": [],
-      "phone": null
-    },
-    {
-      "id": 125,
-      "contactPreference": "",
-      "email": "",
-      "name": "",
-      "skills": [],
-      "phone": null
-    },
-    {
       "id": 126,
       "contactPreference": "email",
       "email": "e@dell.com",
       "name": "rupali",
-      "skills": [
-        {
+      "skills": [{
           "skillName": "IQ",
           "experienceInYears": "2",
           "proficiency": "beginner"
