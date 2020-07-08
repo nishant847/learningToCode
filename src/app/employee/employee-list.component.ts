@@ -27,6 +27,6 @@ export class EmployeeListComponent implements OnInit {
   }
 
   editButtonClick = (id: number) => {
-    this._routerService.navigate(['employee/edit', id]);
+    this._routerService.navigate(['employees/edit', id]);
   };
 }

@@ -4,8 +4,6 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserComponent } from './user/user.component';
-import { EmployeeComponent } from './employee/employee.component';
-import { EmployeeListComponent } from './employee/employee-list.component';
 import { PageNotFoundComponent } from './page-not-found.component';
 
 const routes: Routes = [
@@ -17,19 +15,6 @@ const routes: Routes = [
     path: 'about',
     component: AboutComponent,
   },
-  {
-    path: 'employee',
-    component: EmployeeComponent,
-  },
-  {
-    path: 'employee/list',
-    component: EmployeeListComponent,
-  },
-  {
-    path: 'employee/edit/:id',
-    component: EmployeeComponent,
-  },
-
   {
     path: 'user',
     children: [
@@ -44,6 +29,10 @@ const routes: Routes = [
         ],
       },
     ],
+  },
+  {
+    path: 'employees',
+    loadChildren: './employee/employee.module#EmployeeModule',
   },
   {
     path: '',
